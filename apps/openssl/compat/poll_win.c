@@ -44,9 +44,9 @@ conn_has_oob_data(int fd)
 static int
 is_socket(int fd)
 {
+	WSANETWORKEVENTS events;
 	if (fd < 3)
 		return 0;
-	WSANETWORKEVENTS events;
 	return (WSAEnumNetworkEvents((SOCKET)fd, NULL, &events) == 0);
 }
 

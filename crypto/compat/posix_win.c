@@ -29,10 +29,11 @@ FILE *
 posix_fopen(const char *path, const char *mode)
 {
 	if (strchr(mode, 'b') == NULL) {
+		FILE *f;
 		char *bin_mode = NULL;
 		if (asprintf(&bin_mode, "%sb", mode) == -1)
 			return NULL;
-		FILE *f = fopen(path, bin_mode);
+		f = fopen(path, bin_mode);
 		free(bin_mode);
 		return f;
 	}

@@ -101,11 +101,11 @@ sk_deep_copy(void *sk_void, void *copy_func_void, void *free_func_void)
 	void *(*copy_func)(void *) = copy_func_void;
 	void (*free_func)(void *) = free_func_void;
 	_STACK *ret = sk_dup(sk);
+	size_t i;
 
 	if (ret == NULL)
 		return NULL;
 
-	size_t i;
 	for (i = 0; i < ret->num; i++) {
 		if (ret->data[i] == NULL)
 			continue;
